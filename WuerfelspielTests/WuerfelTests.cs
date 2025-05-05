@@ -7,23 +7,33 @@ namespace WuerfelspielTests
     [TestClass]
     public class WuerfelTests
     {
-        [DataRow(1)]
-        [DataRow(2)]
-        [DataRow(3)]
-        [DataRow(4)]
-        [DataRow(5)]
-        [DataRow(6)]
         [TestMethod]
-        public void Wuerfel_wuerfeltZahlZwischenEinsUndSechs(int moeglicheSumme)
+        public void Wuerfel_wirdKorrektErstellt()
         {
             // Arrange
-            Wuerfel wuerfel = new Wuerfel(6);
+            Wuerfel w = new Wuerfel();
 
             // Act
-            int summe = wuerfel.Wuerfeln();
+            string name = w.ToString();
 
             // Assert
-            Assert.AreEqual(moeglicheSumme, summe);
+            Assert.AreEqual("Wuerfelspiel.Wuerfel", name);
         }
+
+        [TestMethod]
+        public void Wuerfel_wuerfeltZahlZwischenEinsUndSechs()
+        {
+            // Arrange
+            Wuerfel w = new Wuerfel();
+
+            // Act
+            int summe = w.Wuerfeln();
+
+            // Assert
+            Assert.IsTrue(summe >= 1);
+            Assert.IsTrue(summe <= 6);
+        }
+
+
     }
 }
