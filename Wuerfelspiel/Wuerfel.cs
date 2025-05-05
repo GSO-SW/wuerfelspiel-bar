@@ -5,12 +5,32 @@ namespace Wuerfelspiel
 {
     public class Wuerfel
     {
-        int anzahlSeiten;
-        public Wuerfel(int anzahlSeiten) { this.anzahlSeiten = anzahlSeiten; }
+        private int anzahlSeiten;
+        public Wuerfel(int anzahlSeiten) 
+        { 
+            this.anzahlSeiten = anzahlSeiten; 
+        }
 
         public int Wuerfeln()
         {
-            return 1; 
+            Random r = new Random();
+            return r.Next(1, this.anzahlSeiten+1);
+
+        }
+
+        public int AnzahlSeiten
+        {
+            get 
+            { 
+                if (this.anzahlSeiten >= 1)
+                {
+                return this.anzahlSeiten; 
+                }
+                else if (this.anzahlSeiten < 1)
+                {
+                    // argument
+                }
+            }
         }
     }
 }
