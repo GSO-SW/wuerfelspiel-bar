@@ -5,10 +5,7 @@ namespace Wuerfelspiel
 {
     public class Wuerfel
     {
-        private int anzahlSeiten;
-        public Wuerfel() 
-        { 
-        }
+        private int anzahlSeiten = 6;
         public Wuerfel(int anzahlSeiten)
         {
             this.anzahlSeiten = anzahlSeiten;
@@ -25,10 +22,6 @@ namespace Wuerfelspiel
         {
             get 
             { 
-                if (this.anzahlSeiten < 1)
-                {
-                    throw new ArgumentOutOfRangeException();
-                }
                 return this.anzahlSeiten;
             }
         }

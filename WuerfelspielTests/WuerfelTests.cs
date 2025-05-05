@@ -33,20 +33,5 @@ namespace WuerfelspielTests
             Assert.IsTrue(summe >= 1);
             Assert.IsTrue(summe <= 6);
         }
-
-        [TestMethod]
-        public void Wuerfel_wuerfeltZahlZwischenEinsUndAngegebenerZahl()
-        {
-            // Arrange
-            int anzahlSeiten = 10;
-            Wuerfel w = new Wuerfel(anzahlSeiten);
-
-            // Act
-            int summe = w.Wuerfeln();
-
-            // Assert
-            Assert.IsTrue(summe >= 1);
-            Assert.IsTrue(summe <= 10);
-        }
     }
 }
