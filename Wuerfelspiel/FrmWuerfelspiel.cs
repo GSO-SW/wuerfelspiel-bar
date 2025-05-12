@@ -17,7 +17,8 @@ namespace Wuerfelspiel
         int summe = 0;
 
         Rectangle rec;
-        Rectangle[,] kreise;
+        Rectangle[,] kreise1;
+        Rectangle[,] kreise2;
         int width = 950;
         int height = 600;
 
@@ -67,7 +68,8 @@ namespace Wuerfelspiel
             Brush brush = new SolidBrush(Color.Black);
 
             int anzahlKreiseProReihe = 3;
-            kreise = new Rectangle[anzahlKreiseProReihe, anzahlKreiseProReihe];
+            kreise1 = new Rectangle[anzahlKreiseProReihe, anzahlKreiseProReihe];
+            kreise2 = new Rectangle[anzahlKreiseProReihe, anzahlKreiseProReihe];
 
             for (int i = 0; i < 5; i++)
             {
@@ -78,74 +80,146 @@ namespace Wuerfelspiel
                 g.DrawRectangle(pen, rec);
             }
 
+            #region Kreise für Würfel 1
             for (int j = 0; j < anzahlKreiseProReihe; j++)
             {
                 for (int i = 0; i < anzahlKreiseProReihe; i++)
                 {
                     //g.DrawEllipse(pen, i * 50, j * 50, 50, 50);
                     //g.FillEllipse(brush, i * 50, j * 50, 50, 50);
-                    kreise[j, i] = new Rectangle(i * 50, j * 50, 50, 50);
+                    kreise1[j, i] = new Rectangle(i * 50, j * 50, 50, 50);
                 }
             }
-            
+#endregion
+            #region Kreise für Würfel 2
+            for (int j = 0; j < anzahlKreiseProReihe; j++)
+            {
+                for (int i = 0; i < anzahlKreiseProReihe; i++)
+                {
+                    //g.DrawEllipse(pen, 200 + (i * 50), j * 50, 50, 50);
+                    //g.FillEllipse(brush, 200 + (i * 50), j * 50, 50, 50);
+                    kreise2[j, i] = new Rectangle(200 + (i * 50), j * 50, 50, 50);
+                }
+            }
+            #endregion
+            #region Switch Würfe 0
             switch (wuerfe[0])
             {
                 case 1:
-                    g.DrawEllipse(pen, kreise[1, 1]);
-                    g.FillEllipse(brush, kreise[1, 1]);
+                    g.DrawEllipse(pen, kreise1[1, 1]);
+                    g.FillEllipse(brush, kreise1[1, 1]);
                     break;
                 case 2:
-                    g.DrawEllipse(pen, kreise[0, 2]);
-                    g.FillEllipse(brush, kreise[0, 2]);
-                    g.DrawEllipse(pen, kreise[2, 0]);
-                    g.FillEllipse(brush, kreise[2, 0]);
+                    g.DrawEllipse(pen, kreise1[0, 2]);
+                    g.FillEllipse(brush, kreise1[0, 2]);
+                    g.DrawEllipse(pen, kreise1[2, 0]);
+                    g.FillEllipse(brush, kreise1[2, 0]);
                     break;
                 case 3:
-                    g.DrawEllipse(pen, kreise[0, 2]);
-                    g.FillEllipse(brush, kreise[0, 2]);
-                    g.DrawEllipse(pen, kreise[1, 1]);
-                    g.FillEllipse(brush, kreise[1, 1]);
-                    g.DrawEllipse(pen, kreise[2, 0]);
-                    g.FillEllipse(brush, kreise[2, 0]);
+                    g.DrawEllipse(pen, kreise1[0, 2]);
+                    g.FillEllipse(brush, kreise1[0, 2]);
+                    g.DrawEllipse(pen, kreise1[1, 1]);
+                    g.FillEllipse(brush, kreise1[1, 1]);
+                    g.DrawEllipse(pen, kreise1[2, 0]);
+                    g.FillEllipse(brush, kreise1[2, 0]);
                     break;
                 case 4:
-                    g.DrawEllipse(pen, kreise[0, 0]);
-                    g.FillEllipse(brush, kreise[0, 0]);
-                    g.DrawEllipse(pen, kreise[0, 2]);
-                    g.FillEllipse(brush, kreise[0, 2]);
-                    g.DrawEllipse(pen, kreise[2, 0]);
-                    g.FillEllipse(brush, kreise[2, 0]);
-                    g.DrawEllipse(pen, kreise[2, 2]);
-                    g.FillEllipse(brush, kreise[2, 2]);
+                    g.DrawEllipse(pen, kreise1[0, 0]);
+                    g.FillEllipse(brush, kreise1[0, 0]);
+                    g.DrawEllipse(pen, kreise1[0, 2]);
+                    g.FillEllipse(brush, kreise1[0, 2]);
+                    g.DrawEllipse(pen, kreise1[2, 0]);
+                    g.FillEllipse(brush, kreise1[2, 0]);
+                    g.DrawEllipse(pen, kreise1[2, 2]);
+                    g.FillEllipse(brush, kreise1[2, 2]);
                     break;
                 case 5:
-                    g.DrawEllipse(pen, kreise[0, 0]);
-                    g.FillEllipse(brush, kreise[0, 0]);
-                    g.DrawEllipse(pen, kreise[0, 2]);
-                    g.FillEllipse(brush, kreise[0, 2]);
-                    g.DrawEllipse(pen, kreise[2, 0]);
-                    g.FillEllipse(brush, kreise[2, 0]);
-                    g.DrawEllipse(pen, kreise[2, 2]);
-                    g.FillEllipse(brush, kreise[2, 2]);
-                    g.DrawEllipse(pen, kreise[1, 1]);
-                    g.FillEllipse(brush, kreise[1, 1]);
+                    g.DrawEllipse(pen, kreise1[0, 0]);
+                    g.FillEllipse(brush, kreise1[0, 0]);
+                    g.DrawEllipse(pen, kreise1[0, 2]);
+                    g.FillEllipse(brush, kreise1[0, 2]);
+                    g.DrawEllipse(pen, kreise1[2, 0]);
+                    g.FillEllipse(brush, kreise1[2, 0]);
+                    g.DrawEllipse(pen, kreise1[2, 2]);
+                    g.FillEllipse(brush, kreise1[2, 2]);
+                    g.DrawEllipse(pen, kreise1[1, 1]);
+                    g.FillEllipse(brush, kreise1[1, 1]);
                     break;
                 case 6:
-                    g.DrawEllipse(pen, kreise[0, 0]);
-                    g.FillEllipse(brush, kreise[0, 0]);
-                    g.DrawEllipse(pen, kreise[0, 2]);
-                    g.FillEllipse(brush, kreise[0, 2]);
-                    g.DrawEllipse(pen, kreise[1, 0]);
-                    g.FillEllipse(brush, kreise[1, 0]);
-                    g.DrawEllipse(pen, kreise[1, 2]);
-                    g.FillEllipse(brush, kreise[1, 2]);
-                    g.DrawEllipse(pen, kreise[2, 0]);
-                    g.FillEllipse(brush, kreise[2, 0]);
-                    g.DrawEllipse(pen, kreise[2, 2]);
-                    g.FillEllipse(brush, kreise[2, 2]);
+                    g.DrawEllipse(pen, kreise1[0, 0]);
+                    g.FillEllipse(brush, kreise1[0, 0]);
+                    g.DrawEllipse(pen, kreise1[0, 2]);
+                    g.FillEllipse(brush, kreise1[0, 2]);
+                    g.DrawEllipse(pen, kreise1[1, 0]);
+                    g.FillEllipse(brush, kreise1[1, 0]);
+                    g.DrawEllipse(pen, kreise1[1, 2]);
+                    g.FillEllipse(brush, kreise1[1, 2]);
+                    g.DrawEllipse(pen, kreise1[2, 0]);
+                    g.FillEllipse(brush, kreise1[2, 0]);
+                    g.DrawEllipse(pen, kreise1[2, 2]);
+                    g.FillEllipse(brush, kreise1[2, 2]);
                     break;
             }
-
+            #endregion
+            #region Switch Würfe 1
+            switch (wuerfe[1])
+            {
+                case 1:
+                    g.DrawEllipse(pen, kreise2[1, 1]);
+                    g.FillEllipse(brush, kreise2[1, 1]);
+                    break;
+                case 2:
+                    g.DrawEllipse(pen, kreise2[0, 2]);
+                    g.FillEllipse(brush, kreise2[0, 2]);
+                    g.DrawEllipse(pen, kreise2[2, 0]);
+                    g.FillEllipse(brush, kreise2[2, 0]);
+                    break;
+                case 3:
+                    g.DrawEllipse(pen, kreise2[0, 2]);
+                    g.FillEllipse(brush, kreise2[0, 2]);
+                    g.DrawEllipse(pen, kreise2[1, 1]);
+                    g.FillEllipse(brush, kreise2[1, 1]);
+                    g.DrawEllipse(pen, kreise2[2, 0]);
+                    g.FillEllipse(brush, kreise2[2, 0]);
+                    break;
+                case 4:
+                    g.DrawEllipse(pen, kreise2[0, 0]);
+                    g.FillEllipse(brush, kreise2[0, 0]);
+                    g.DrawEllipse(pen, kreise2[0, 2]);
+                    g.FillEllipse(brush, kreise2[0, 2]);
+                    g.DrawEllipse(pen, kreise2[2, 0]);
+                    g.FillEllipse(brush, kreise2[2, 0]);
+                    g.DrawEllipse(pen, kreise2[2, 2]);
+                    g.FillEllipse(brush, kreise2[2, 2]);
+                    break;
+                case 5:
+                    g.DrawEllipse(pen, kreise2[0, 0]);
+                    g.FillEllipse(brush, kreise2[0, 0]);
+                    g.DrawEllipse(pen, kreise2[0, 2]);
+                    g.FillEllipse(brush, kreise2[0, 2]);
+                    g.DrawEllipse(pen, kreise2[2, 0]);
+                    g.FillEllipse(brush, kreise2[2, 0]);
+                    g.DrawEllipse(pen, kreise2[2, 2]);
+                    g.FillEllipse(brush, kreise2[2, 2]);
+                    g.DrawEllipse(pen, kreise2[1, 1]);
+                    g.FillEllipse(brush, kreise2[1, 1]);
+                    break;
+                case 6:
+                    g.DrawEllipse(pen, kreise2[0, 0]);
+                    g.FillEllipse(brush, kreise2[0, 0]);
+                    g.DrawEllipse(pen, kreise2[0, 2]);
+                    g.FillEllipse(brush, kreise2[0, 2]);
+                    g.DrawEllipse(pen, kreise2[1, 0]);
+                    g.FillEllipse(brush, kreise2[1, 0]);
+                    g.DrawEllipse(pen, kreise2[1, 2]);
+                    g.FillEllipse(brush, kreise2[1, 2]);
+                    g.DrawEllipse(pen, kreise2[2, 0]);
+                    g.FillEllipse(brush, kreise2[2, 0]);
+                    g.DrawEllipse(pen, kreise2[2, 2]);
+                    g.FillEllipse(brush, kreise2[2, 2]);
+                    break;
+            }
+            #endregion
         }
     }
 }
