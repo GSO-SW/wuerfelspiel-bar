@@ -39,6 +39,7 @@ namespace Wuerfelspiel
 
         private void btnWuerfeln_Click(object sender, EventArgs e)
         {
+            Refresh();
             summe = 0;
             for (int i = 0; i < 5; i++)
             {
@@ -54,6 +55,8 @@ namespace Wuerfelspiel
             tbxWuerfelDrei.Text = wuerfe[2].ToString();
             tbxWuerfelVier.Text = wuerfe[3].ToString();
             tbxWuerfelFuenf.Text = wuerfe[4].ToString();
+
+            this.Invalidate();
         }
 
         private void FrmWuerfelspiel_Paint(object sender, PaintEventArgs e)
@@ -102,8 +105,8 @@ namespace Wuerfelspiel
                     g.FillEllipse(brush, kreise[0, 2]);
                     g.DrawEllipse(pen, kreise[1, 1]);
                     g.FillEllipse(brush, kreise[1, 1]);
-                    g.DrawEllipse(pen, kreise[2, 2]);
-                    g.FillEllipse(brush, kreise[2, 2]);
+                    g.DrawEllipse(pen, kreise[2, 0]);
+                    g.FillEllipse(brush, kreise[2, 0]);
                     break;
                 case 4:
                     g.DrawEllipse(pen, kreise[0, 0]);
@@ -129,6 +132,8 @@ namespace Wuerfelspiel
                     break;
                 case 6:
                     g.DrawEllipse(pen, kreise[0, 0]);
+                    g.FillEllipse(brush, kreise[0, 0]);
+                    g.DrawEllipse(pen, kreise[0, 2]);
                     g.FillEllipse(brush, kreise[0, 2]);
                     g.DrawEllipse(pen, kreise[1, 0]);
                     g.FillEllipse(brush, kreise[1, 0]);
