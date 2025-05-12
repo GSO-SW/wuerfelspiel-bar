@@ -5,6 +5,8 @@ namespace Wuerfelspiel
 {
     public class Wuerfel
     {
+        Random r = new Random();
+
         private int anzahlSeiten = 6;
         public Wuerfel()
         {
@@ -16,9 +18,7 @@ namespace Wuerfelspiel
 
         public int Wuerfeln()
         {
-            Random r = new Random();
             return r.Next(1, this.anzahlSeiten+1);
-
         }
 
         public int AnzahlSeiten
